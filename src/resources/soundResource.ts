@@ -51,6 +51,15 @@ export const LANG_PRON_MAP: LanguagePronunciationMap = {
       },
     ],
   },
+  es: {
+    defaultPronIndex: 0,
+    pronunciation: [
+      {
+        name: '西班牙语',
+        pron: 'es',
+      },
+    ],
+  },
   code: {
     defaultPronIndex: 0,
     pronunciation: [

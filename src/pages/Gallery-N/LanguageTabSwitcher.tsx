@@ -12,11 +12,12 @@ import { useCallback, useContext } from 'react'
 export type LanguageTabOption = {
   id: LanguageCategoryType
   name: string
-  flag: string
+  flag?: string
 }
 
 const options: LanguageTabOption[] = [
   { id: 'en', name: '英语', flag: enFlag },
+  { id: 'es', name: '西班牙语' },
   { id: 'ja', name: '日语', flag: jpFlag },
   { id: 'de', name: '德语', flag: deFlag },
   { id: 'kk', name: '哈萨克语', flag: kkFlag },
@@ -44,7 +45,13 @@ export function LanguageTabSwitcher() {
           <RadioGroup.Option key={option.id} value={option.id} className="cursor-pointer">
             {({ checked }) => (
               <div className={`flex items-center border-b-2 px-2 pb-1 ${checked ? 'border-indigo-500' : 'border-transparent'}`}>
-                <img src={option.flag} className="mr-1.5 h-7 w-7" />
+                {option.flag ? (
+                  <img src={option.flag} className="mr-1.5 h-7 w-7" />
+                ) : (
+                  <div className="mr-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-gray-200 text-xs font-semibold text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+                    ES
+                  </div>
+                )}
                 <p className={`text-lg font-medium text-gray-700 dark:text-gray-200`}>{option.name}</p>
               </div>
             )}

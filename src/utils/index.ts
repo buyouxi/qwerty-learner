@@ -91,8 +91,8 @@ export function getCurrentDate() {
   return `${year}${month}${day}`
 }
 
-export function calcChapterCount(length: number) {
-  return Math.ceil(length / CHAPTER_LENGTH)
+export function calcChapterCount(length: number, chapterLength?: number) {
+  return Math.ceil(length / (chapterLength ?? CHAPTER_LENGTH))
 }
 
 export function findCommonValues<T>(xs: T[], ys: T[]): T[] {

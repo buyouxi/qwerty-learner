@@ -19,6 +19,7 @@ export function useWordList(): UseWordListResult {
   const currentDictInfo = useAtomValue(currentDictInfoAtom)
   const [currentChapter, setCurrentChapter] = useAtom(currentChapterAtom)
   const { isReviewMode, reviewRecord } = useAtomValue(reviewModeInfoAtom)
+  const chapterLength = currentDictInfo.chapterLength ?? CHAPTER_LENGTH
 
   // Reset current chapter to 0, when currentChapter is greater than chapterCount.
   if (currentChapter >= currentDictInfo.chapterCount) {
@@ -35,7 +36,7 @@ export function useWordList(): UseWordListResult {
     } else if (isReviewMode) {
       newWords = reviewRecord?.words ?? []
     } else if (wordList) {
-      newWords = wordList.slice(currentChapter * CHAPTER_LENGTH, (currentChapter + 1) * CHAPTER_LENGTH)
+      newWords = wordList.slice(currentChapter * chapterLength, (currentChapter + 1) * chapterLength)
     } else {
       newWords = []
     }
@@ -56,7 +57,7 @@ export function useWordList(): UseWordListResult {
         trans,
       }
     })
-  }, [isFirstChapter, isReviewMode, wordList, reviewRecord?.words, currentChapter])
+  }, [isFirstChapter, isReviewMode, wordList, reviewRecord?.words, currentChapter, chapterLength])
 
   return { words, isLoading, error }
 }

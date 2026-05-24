@@ -4155,6 +4155,21 @@ const indonesianDicts: DictionaryResource[] = [
   },
 ]
 
+const spanishDicts: DictionaryResource[] = [
+  {
+    id: 'spanish_15k',
+    name: 'Spanish 15k',
+    description: '西班牙语常用词汇 15000 词（拼写西语，释义为英语）',
+    category: '西班牙语',
+    tags: ['基础'],
+    url: '/dicts/Spanish_15k.json',
+    length: 14996,
+    chapterLength: 200,
+    language: 'es',
+    languageCategory: 'es',
+  },
+]
+
 /**
  * Built-in dictionaries in an array.
  * Why arrays? Because it keeps the order across browsers.
@@ -4168,6 +4183,7 @@ export const dictionaryResources: DictionaryResource[] = [
   ...germanExam,
   ...kazakhHapinDicts,
   ...indonesianDicts,
+  ...spanishDicts,
 
   // {
   //   id: 'zhtest',
@@ -4191,7 +4207,7 @@ export const dictionaryResources: DictionaryResource[] = [
 
 export const dictionaries: Dictionary[] = dictionaryResources.map((resource) => ({
   ...resource,
-  chapterCount: calcChapterCount(resource.length),
+  chapterCount: calcChapterCount(resource.length, resource.chapterLength),
 }))
 
 /**

@@ -8,6 +8,7 @@ export type DictionaryResource = {
   tags: string[]
   url: string
   length: number
+  chapterLength?: number
   language: LanguageType
   languageCategory: LanguageCategoryType
   //override default pronunciation when not undefined
@@ -22,6 +23,7 @@ export type Dictionary = {
   tags: string[]
   url: string
   length: number
+  chapterLength?: number
   language: LanguageType
   languageCategory: LanguageCategoryType
   // calculated in the store
